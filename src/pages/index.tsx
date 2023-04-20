@@ -41,7 +41,7 @@ export default function Home({ highlights, categories }: HomeProps) {
         <div className="flex space-x-4">
           {highlights.map((d) => {
             return (
-              <div className="w-full lg:flex container">
+              <div className="w-full lg:flex container" key={d.title}>
                 <Card data={d} key={d.title} />
               </div>
             );

@@ -35,9 +35,8 @@ export const Category = ({
       <div className={className}>
         {categories?.map((d: CategoriesProps, i: number) => {
           return (
-            <div>
+            <div key={i}>
               <li
-                key={i}
                 className={twc.category}
                 onClick={() => setIsActive(d.name)}
               >
