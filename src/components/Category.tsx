@@ -11,7 +11,7 @@ const twc = {
   headingCategory: "text-base font-bold text-dark-green plex-mono pb-4",
   category:
     "mb-2 p-6 flex justify-between items-center bg-white cursor-pointer w-full",
-  categoryTitle: "font-normal text-base leading-5",
+  categoryTitle: "font-normal plex-mono text-base leading-5",
 };
 
 export type CategoryProps = {
