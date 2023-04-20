@@ -3,13 +3,13 @@ import { Category } from "@/components/Category";
 import { Footer } from "@/components/common/footer";
 import { TravelGuide } from "@/components/TravelGuide";
 import { Banner } from "@/components/Banner";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect } from "react";
 import { Carousel } from "@/components/common/carousel";
 import { Card } from "@/components/card";
 import { CategoriesProps, HighLightProp } from "@/types/types";
 import { AppContext } from "@/context/ApiContext";
 import { categoriesService, hightlightService } from "@/core/service";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { GetStaticProps } from "next";
 
 export interface HomeProps {
   highlights: Array<HighLightProp>;

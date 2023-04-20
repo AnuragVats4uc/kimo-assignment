@@ -18,6 +18,7 @@ export const AppProvider = ({ children }: Props) => {
   const [data, setData] = useState({
     highlight: null,
     categories: null,
+    activities: null,
   });
   const contextValue = { data, setData };
   return (

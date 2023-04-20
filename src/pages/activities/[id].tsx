@@ -1,3 +1,4 @@
+import { Activities } from "@/components/Activities";
 import { Banner } from "@/components/Banner";
 import { Category } from "@/components/Category";
 import { Card } from "@/components/card";
@@ -13,21 +14,6 @@ import { CategoriesProps, HighLightProp } from "@/types/types";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { ParsedUrlQuery } from "querystring";
 import React, { useContext, useEffect } from "react";
-
-const twc = {
-  headingCategory: "text-base font-bold text-dark-green plex-mono pb-4",
-};
-
-export type ActivityName = {
-  name: string;
-};
-export type Activities = {
-  name: string;
-  description: string;
-  image: string;
-  activities: ActivityName[];
-};
-
 export interface IParams extends ParsedUrlQuery {
   id: string;
 }
@@ -45,8 +31,8 @@ export const ActivityType = ({
 }: ActivityProps) => {
   const { setData } = useContext(AppContext);
   useEffect(() => {
-    setData({ highlights, categories });
-  }, [highlights, setData, categories]);
+    setData({ highlights, categories, activities });
+  }, [highlights, setData, categories, activities]);
   return (
     <div>
       <Header />
@@ -55,14 +41,7 @@ export const ActivityType = ({
         heading={activities.name}
         description={activities.description}
       />
-      <div className="px-[188px] my-10">
-        <p className={twc.headingCategory}>Activities</p>
-        <div className="space-y-4">
-          {activities.activities.map((d: any) => {
-            return <Card isIcon={false} key={d.name} data={d} />;
-          })}
-        </div>
-      </div>
+      <Activities />
       <Category
         isActivity={true}
         isIconEnabled={false}
