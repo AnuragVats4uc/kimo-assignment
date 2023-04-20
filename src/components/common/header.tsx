@@ -16,7 +16,7 @@ const twc = {
   titleContainer:
     "flex justify-center items-center lg:space-x-5 xl:space-x-10 lg:ml-10 xl:ml-20",
   titleStyle:
-    "font-normal text-lg lg:text-base leading-5 text-dark-green cursor-pointer",
+    "font-normal plex-mono text-lg lg:text-base leading-5 text-dark-green cursor-pointer",
   buttonStyle:
     "px-6 pt-9px pb-11px text-center bg-teal z-[5] text-base leading-5 text-white rounded-lg",
 };

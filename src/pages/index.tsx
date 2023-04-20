@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
 import { Header } from "@/components/common/header";
 import { Category } from "@/components/Category";
 import { Footer } from "@/components/common/footer";
@@ -8,12 +6,9 @@ import { Banner } from "@/components/Banner";
 import { useContext, useEffect, useState } from "react";
 import { Carousel } from "@/components/common/carousel";
 import { Card } from "@/components/card";
-import axios from "axios";
 import { CategoriesProps, HighLightProp } from "@/types/types";
 import { AppContext } from "@/context/ApiContext";
 import { categoriesService, hightlightService } from "@/core/service";
-
-const inter = Inter({ subsets: ["latin"] });
 
 export type HomeProps = {
   highlights: Array<HighLightProp>;
