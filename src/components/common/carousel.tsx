@@ -19,7 +19,7 @@ export const Carousel = () => {
   let settings = {
     dots: false,
     arrows: false,
-    center:true,
+    center: true,
     slidesToShow: 1.03,
     slidesToScroll: 1,
   };
@@ -27,16 +27,14 @@ export const Carousel = () => {
     <div className={twc.sliderContainer}>
       <p className={twc.headingCategory}>Highlights</p>
       <Slider {...settings} className="ml-4">
-        {highlights?.map((d: HighLightProp) => {
-          return (
-            <div
-              className={cn(twc.cardContainer, "bg-white mx-2.5")}
-              key={d.title}
-            >
-              <Card data={d} />
-            </div>
-          );
-        })}
+        {highlights?.map((d: HighLightProp) => (
+          <div
+            className={cn(twc.cardContainer, "bg-white mx-2.5")}
+            key={d.title}
+          >
+            <Card data={d} />
+          </div>
+        ))}
       </Slider>
     </div>
   );

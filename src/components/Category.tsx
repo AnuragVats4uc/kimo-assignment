@@ -1,60 +1,70 @@
-import React, { useContext, useState } from "react";
+import React, { SetStateAction, useContext, useState } from "react";
 import { NextIcon } from "./icons/nextIcon";
-import Link from "next/link";
-import { CategoriesProps } from "@/types/types";
+import { ActivitiesProps, CategoriesProps } from "@/types/types";
 import { AppContext } from "@/context/ApiContext";
-import cn from 'classnames'
+import cn from "classnames";
+import { useRouter } from "next/router";
 
 const twc = {
-  categoryContainer: "bg-light-cyan py-10 pl-17px pr-4 lg:w-1/2",
+  categoryContainer:
+    "bg-light-cyan py-10 pl-17px pr-4 w-full lg:w-1/2 scrollbar-hide",
   headingCategory: "text-base font-bold text-dark-green plex-mono pb-4",
   category:
-    "mb-2 p-6 flex justify-between items-center bg-white cursor-pointer",
+    "mb-2 p-6 flex justify-between items-center bg-white cursor-pointer w-full",
   categoryTitle: "font-normal text-base leading-5",
 };
 
 export type CategoryProps = {
   isIconEnabled?: boolean;
   className?: string;
-  classNameContainer?:string
+  classNameContainer?: string;
+  isActivity?: boolean;
 };
+
+export enum CATEGORY {
+  ADVENTURE = "Adventure",
+  HEADING = "Categories",
+}
 
 export const Category = ({
   isIconEnabled = true,
   className,
-  classNameContainer
+  classNameContainer,
+  isActivity = false,
 }: CategoryProps) => {
   const { data } = useContext(AppContext);
   const { categories } = data;
-  const [isActive, setIsActive] = useState("Adventure");
-  const filter = categories?.filter((d: any) => d.name === isActive) || [];
-  console.log("aaa",filter)
+  const [isActive, setIsActive] = useState(CATEGORY.ADVENTURE);
+  const filter =
+    categories?.filter((d: CategoriesProps) => d.name === isActive) || [];
+  const router = useRouter();
+  const path = router.pathname.replace("/[id]", "") === "/activities";
   return (
-    <div className={cn(twc.categoryContainer,classNameContainer)}>
-      <p className={twc.headingCategory}>Categories</p>
-      <div className={className}>
-        {categories?.map((d: CategoriesProps, i: number) => {
-          return (
-            <div key={i}>
-              <li
-                className={twc.category}
-                onClick={() => setIsActive(d.name)}
+    <div className={cn(twc.categoryContainer, classNameContainer)}>
+      <p className={twc.headingCategory}>{CATEGORY.HEADING}</p>
+      <div className={cn(className, "scrollbar-hide")}>
+        {categories?.map((d: CategoriesProps, i: number) => (
+          <div key={i}>
+            <li
+              className={cn(twc.category, path && "min-w-[150px] ")}
+              onClick={() => setIsActive(d.name as SetStateAction<CATEGORY>)}
+            >
+              <p
+                className={cn(twc.categoryTitle, path && "w-full text-center")}
               >
-                <p className={twc.categoryTitle}>{d.name}</p>
-                {isIconEnabled && <NextIcon />}
-              </li>
-            </div>
-          );
-        })}
-      
-      </div>
-      {filter[0]?.activities?.map((e: any, i: any) => {
-          return (
-            <li key={i} className={`${twc.category} w-full`}>
-              {e.title}
+                {d.name}
+              </p>
+              {isIconEnabled && <NextIcon />}
             </li>
-          );
-        })}
+          </div>
+        ))}
+      </div>
+      {isActivity &&
+        filter[0]?.activities?.map((e: ActivitiesProps, i: number) => (
+          <div className="mt-4" key={i}>
+            <li className={twc.category}>{e.title}</li>
+          </div>
+        ))}
     </div>
   );
 };

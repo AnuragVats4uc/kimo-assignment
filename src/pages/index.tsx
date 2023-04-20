@@ -27,9 +27,7 @@ export default function Home({ highlights, categories }: HomeProps) {
   }, [highlights, categories, setData]);
   return (
     <div className="relative overflow-hidden">
-      <div className="lg:container lg:flex lg:justify-center lg:mx-auto">
-        <Header />
-      </div>
+      <Header />
       <Banner />
       <div className="w-screen lg:hidden">
         <Carousel />
@@ -38,7 +36,7 @@ export default function Home({ highlights, categories }: HomeProps) {
         <p className={"text-base font-bold text-dark-green plex-mono pb-4"}>
           Highlights
         </p>
-        <div className="flex space-x-4">
+        <div className="flex space-x-4 hover:space-x-8 ">
           {highlights.map((d) => {
             return (
               <div className="w-full lg:flex container" key={d.title}>
@@ -48,7 +46,7 @@ export default function Home({ highlights, categories }: HomeProps) {
           })}
         </div>
       </div>
-      <div className="lg:flex lg:w-full bg-light-cyan flex justify-center px-[188px]">
+      <div className="lg:flex lg:w-full bg-light-cyan lg:px-[188px]">
         <Category />
         <TravelGuide />
       </div>
