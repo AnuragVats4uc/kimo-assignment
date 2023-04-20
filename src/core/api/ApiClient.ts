@@ -4,6 +4,7 @@ import {
   AxiosRequestConfig,
   IAxiosHttpClient,
   STATUS_CODE,
+  STATUS_CODE_ERROR,
 } from "../model";
 
 export default class HttpClient implements IAxiosHttpClient {
@@ -22,20 +23,20 @@ export default class HttpClient implements IAxiosHttpClient {
       },
     });
   }
-  private handleError(error: any): any {
+  private handleError(error: any) {
     switch (error) {
       case STATUS_CODE.INTERNAL_SERVER_ERROR:
-        throw new Error("Internal Server Error");
+        throw new Error(STATUS_CODE_ERROR.INTERNAL_SERVER_ERROR);
       case STATUS_CODE.UNAUTHORIZED:
-        throw new Error("Unauthorized");
+        throw new Error(STATUS_CODE_ERROR.UNAUTHORIZED);
       case STATUS_CODE.NO_CONTENT:
-        throw new Error("No Content");
+        throw new Error(STATUS_CODE_ERROR.NO_CONTENT);
       case STATUS_CODE.BAD_REQUEST:
-        throw new Error("Bad Request");
+        throw new Error(STATUS_CODE_ERROR.BAD_REQUEST);
       case STATUS_CODE.FORBIDDEN:
-        throw new Error("Forbidden");
+        throw new Error(STATUS_CODE_ERROR.FORBIDDEN);
       case STATUS_CODE.TOO_MANY_REQUEST:
-        throw new Error("Too Many Requests");
+        throw new Error(STATUS_CODE_ERROR.TOO_MANY_REQUEST);
     }
   }
   constructor(apiConfiguration?: AxiosApiConfiguration) {

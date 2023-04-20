@@ -17,6 +17,15 @@ export enum STATUS_CODE {
   BAD_REQUEST_404 = 404,
 }
 
+export enum STATUS_CODE_ERROR {
+  INTERNAL_SERVER_ERROR = "Internal Server Error",
+  TOO_MANY_REQUEST = "Too Many Requests",
+  BAD_REQUEST = "Bad Request",
+  NO_CONTENT = "No Content",
+  UNAUTHORIZED = "Unauthorized",
+  FORBIDDEN = "Forbidden",
+}
+
 export interface IAxiosHttpClient {
   get<TResponse>(path: string): Promise<TResponse>;
   post<TRequest, TResponse>(
