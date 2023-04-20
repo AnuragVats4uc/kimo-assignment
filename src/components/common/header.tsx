@@ -14,16 +14,18 @@ const twc = {
   headerInnerContainerDesktop:
     "bg-white z-50 lg:w-full lg:px-4 xl:px-6 lg:py-4 xl:py-5  lg:flex lg:justify-between rounded-xl",
   titleContainer:
-    "flex justify-center items-center lg:space-x-5 xl:space-x-10 lg:ml-10 xl:ml-20",
+    "lg:flex lg:justify-center lg:items-center lg:space-x-5 xl:space-x-10 lg:ml-10 xl:ml-20",
   titleStyle:
-    "font-normal plex-mono text-lg lg:text-base leading-5 text-dark-green cursor-pointer",
+    "lg:font-normal lg:text-lg lg:text-base lg:leading-5 lg:text-dark-green lg:cursor-pointer",
   buttonStyle:
-    "px-6 pt-9px pb-11px text-center bg-teal z-[5] text-base leading-5 text-white rounded-lg",
+    "lg:px-6 plex-mono lg:pt-9px lg:pb-11px lg:text-center lg:font-bold lg:bg-teal lg:z-[5] lg:text-base lg:leading-5 lg:text-white lg:rounded-lg hover:bg-white hover:text-teal border border-teal transition-all ease-in-out duration-700",
 };
 
 export enum HEADERS {
   HOME_PATH = "/",
-  HOME = "HOME",
+  HOME = "Home",
+  TRADITIONAL_FESTIVAL = "Traditional Festivals",
+  HULA = "Hula",
 }
 
 export const Header = () => {
@@ -43,7 +45,7 @@ export const Header = () => {
               <AlohaIcon />
               <ul className={twc.titleContainer}>
                 <Link href={HEADERS.HOME_PATH} className={twc.titleStyle}>
-                  {HEADERS.HOME}
+                  <span className="plex-mono">{HEADERS.HOME}</span>
                 </Link>
                 {highlights?.map((d: HighLightProp) => (
                   <Link
@@ -51,7 +53,12 @@ export const Header = () => {
                     className={twc.titleStyle}
                     key={d.title}
                   >
-                    {d.title}
+                    <span className="plex-mono">
+                      {d.title.replace(
+                        HEADERS.TRADITIONAL_FESTIVAL,
+                        HEADERS.HULA
+                      )}
+                    </span>
                   </Link>
                 ))}
               </ul>

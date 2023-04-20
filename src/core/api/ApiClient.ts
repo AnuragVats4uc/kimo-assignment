@@ -12,7 +12,7 @@ export default class HttpClient implements IAxiosHttpClient {
     apiConfiguration?: AxiosApiConfiguration
   ): AxiosInstance {
     return Axios.create({
-      baseURL: "https://web-dev.dev.kimo.ai/v1",
+      baseURL: process.env.BASE_URL,
       responseType: "json" as const,
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +69,7 @@ export default class HttpClient implements IAxiosHttpClient {
   async put<TRequest, TResponse>(
     path: string,
     payload: TRequest,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<TResponse> {
     try {
       const response = config
@@ -83,7 +83,7 @@ export default class HttpClient implements IAxiosHttpClient {
   }
   async delete<TResponse>(
     path: string,
-    config?: AxiosRequestConfig,
+    config?: AxiosRequestConfig
   ): Promise<TResponse> {
     try {
       const response = config

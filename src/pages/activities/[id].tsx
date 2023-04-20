@@ -11,6 +11,7 @@ import {
 } from "@/core/service";
 import { CategoriesProps, HighLightProp } from "@/types/types";
 import { GetStaticPaths, GetStaticProps } from "next";
+import { ParsedUrlQuery } from "querystring";
 import React, { useContext, useEffect } from "react";
 
 const twc = {
@@ -27,19 +28,27 @@ export type Activities = {
   activities: ActivityName[];
 };
 
+export interface IParams extends ParsedUrlQuery {
+  id: string;
+}
+
 export type ActivityProps = {
   activities: Activities;
   highlights: Array<HighLightProp>;
   categories: Array<CategoriesProps>;
 };
 
-function ActivityType({ activities, highlights, categories }: ActivityProps) {
+export const ActivityType = ({
+  activities,
+  highlights,
+  categories,
+}: ActivityProps) => {
   const { setData } = useContext(AppContext);
   useEffect(() => {
     setData({ highlights, categories });
   }, [highlights, setData, categories]);
   return (
-    <div className="">
+    <div>
       <Header />
       <Banner
         image={activities.image}
@@ -63,28 +72,37 @@ function ActivityType({ activities, highlights, categories }: ActivityProps) {
       <Footer />
     </div>
   );
-}
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const response = await hightlightService.getHighlights();
-  const paths = response.map((d) => ({ params: { id: d.title } }));
+  const paths = response?.map((d) => ({ params: { id: d.title } }));
   return {
     paths,
-    fallback: false, // can also be true or 'blocking'
+    fallback: false,
   };
 };
 
-export const getStaticProps = async (context: any) => {
-  const data = await hightlightService.getHighlights();
-  const data2 = await categoriesService.getCategories();
-  const response = await activitiesService.getActivities(context.params.id);
-  return {
-    props: {
-      activities: response,
-      highlights: data,
-      categories: data2,
-    },
-  };
+export const getStaticProps: GetStaticProps = async (context) => {
+  try {
+    const { id } = context.params as IParams;
+    const data = await hightlightService.getHighlights();
+    const data2 = await categoriesService.getCategories();
+    const response = await activitiesService.getActivities(id);
+    return {
+      props: {
+        activities: response,
+        highlights: data,
+        categories: data2,
+      },
+    };
+  } catch (error: any) {
+    return {
+      props: {
+        error: error.message,
+      },
+    };
+  }
 };
 
 export default ActivityType;

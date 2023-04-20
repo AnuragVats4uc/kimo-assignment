@@ -4,13 +4,13 @@ import React from "react";
 const twc = {
   travelContainer: "bg-light-cyan pb-20 w-full lg:w-1/2 lg:pt-10",
   travelHeading: "text-base font-bold text-dark-green plex-mono pb-4 px-17px",
-  travelHeadingContainer: "mr-19px ml-4 p-6 bg-white",
+  travelHeadingContainer: "mr-19px ml-4 p-6 bg-white rounded-lg",
   travelHeadingInnerContainer: "flex justify-between mb-4",
   travelHeadingStyle: "plex-mono font-bold text-xl leading-5 mb-15px",
   travelDescription: "plex-mono font-normal text-base leading-5",
   travelImageContainer: "w-74px h-74px rounded-full",
   buttonLabel:
-    "border-button font-bold text-base leading-5 rounded-lg text-teal px-6  pt-9px pb-11px flex items-center justify-center",
+    "font-bold text-base leading-5 rounded-lg text-teal px-6  pt-9px pb-11px flex items-center border border-teal hover:bg-teal hover:text-white transition-all ease-in-out duration-500 justify-center",
 };
 
 export enum TRAVELGUIDE {

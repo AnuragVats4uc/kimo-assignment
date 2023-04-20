@@ -9,14 +9,15 @@ import { Card } from "@/components/card";
 import { CategoriesProps, HighLightProp } from "@/types/types";
 import { AppContext } from "@/context/ApiContext";
 import { categoriesService, hightlightService } from "@/core/service";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
-export type HomeProps = {
+export interface HomeProps {
   highlights: Array<HighLightProp>;
   categories: Array<CategoriesProps>;
-};
+}
 
 export default function Home({ highlights, categories }: HomeProps) {
-  const { setData, data } = useContext(AppContext);
+  const { setData } = useContext(AppContext);
   useEffect(() => {
     setData({ highlights, categories });
   }, [highlights, categories, setData]);
@@ -50,13 +51,21 @@ export default function Home({ highlights, categories }: HomeProps) {
   );
 }
 
-export async function getStaticProps(params: any) {
-  const data = await hightlightService.getHighlights();
-  const data2 = await categoriesService.getCategories();
-  return {
-    props: {
-      highlights: data,
-      categories: data2,
-    },
-  };
-}
+export const getStaticProps: GetStaticProps = async () => {
+  try {
+    const data = await hightlightService.getHighlights();
+    const data2 = await categoriesService.getCategories();
+    return {
+      props: {
+        highlights: data,
+        categories: data2,
+      },
+    };
+  } catch (error: any) {
+    return {
+      props: {
+        error: error.message,
+      },
+    };
+  }
+};
