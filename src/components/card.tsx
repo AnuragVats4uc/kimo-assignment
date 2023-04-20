@@ -3,6 +3,7 @@ import React from "react";
 import { ArrowForward } from "./icons/ArrowForward";
 import { HighLightProp } from "@/types/types";
 import Link from "next/link";
+import cn from "classnames";
 
 export type CardProps = {
   data: HighLightProp | any;
@@ -10,7 +11,7 @@ export type CardProps = {
 };
 
 const twc = {
-  cardContainer: "w-full h-full  bg-white rounded-lg boxShadow",
+  cardContainer: "w-full bg-white rounded-lg boxShadow",
   imageContainer: "w-full rounded-lg",
   image: "w-full rounded-t-lg",
   title: "plex-mono font-bold text-base text-teal leading-5 pb-4 ",
@@ -22,34 +23,38 @@ const twc = {
 
 export const Card = ({ data, isIcon = true }: CardProps) => {
   return (
-    <Link
-      href={`/activities/${data.title}`}
-      className={`${twc.cardContainer} hover:scale-110 ease-in-out duration-75`}
-    >
-      {data.image && (
-        <div className={twc.imageContainer}>
-          <Image
-            className={twc.image}
-            src={data.image}
-            alt="image"
-            width={100}
-            height={100}
-          />
+    <Link href={`/activities/${data.title}`} className={``}>
+      <div
+        className={cn(
+          twc.cardContainer,
+          "hover:scale-110 ease-in-out duration-75"
+        )}
+      >
+        {data.image && (
+          <div className={twc.imageContainer}>
+            <Image
+              className={twc.image}
+              src={data.image}
+              alt="image"
+              width={100}
+              height={100}
+            />
+          </div>
+        )}
+        <div className="p-6">
+          <p className={twc.title}>{data.title || data.name}</p>
+          {data.description && (
+            <p className={twc.description}>{data.description}</p>
+          )}
         </div>
-      )}
-      <div className="p-6">
-        <p className={twc.title}>{data.title || data.name}</p>
-        {data.description && (
-          <p className={twc.description}>{data.description}</p>
+        {isIcon && (
+          <div className={twc.iconContainer}>
+            <div className={twc.icon}>
+              <ArrowForward />
+            </div>
+          </div>
         )}
       </div>
-      {isIcon && (
-        <div className={twc.iconContainer}>
-          <div className={twc.icon}>
-            <ArrowForward />
-          </div>
-        </div>
-      )}
     </Link>
   );
 };

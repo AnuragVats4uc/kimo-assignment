@@ -3,7 +3,7 @@ import React from "react";
 
 const twc = {
   travelContainer: "bg-light-cyan pb-20 w-full lg:w-1/2 lg:pt-10",
-  travelHeading: "text-base font-bold text-dark-green plex-mono pb-4 px-17px",
+  travelHeading: "text-base font-bold text-dark-green plex-mono pb-4 px-19px",
   travelHeadingContainer: "mr-19px ml-4 p-6 bg-white rounded-lg",
   travelHeadingInnerContainer: "flex justify-between mb-4",
   travelHeadingStyle: "plex-mono font-bold text-xl leading-5 mb-15px",

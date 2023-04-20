@@ -10,8 +10,8 @@ import cn from "classnames";
 
 const twc = {
   sliderContainer: "my-10",
-  cardContainer: "py-4 pr-4 w-full",
-  headingCategory: "text-base font-bold text-dark-green plex-mono px-4 pb-4",
+  cardContainer: "py-6 pr-4 w-full",
+  headingCategory: "text-base font-bold text-dark-green plex-mono px-4",
 };
 export const Carousel = () => {
   const { data } = useContext(AppContext);

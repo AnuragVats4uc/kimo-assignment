@@ -21,7 +21,7 @@ export const Activities = () => {
   const { data } = useContext(AppContext);
   const { activities } = data;
   return (
-    <div className="px-[188px] py-10 bg-light-cyan">
+    <div className="px-17px lg:px-[188px] py-10 bg-light-cyan">
       <p className={twc.headingCategory}>Activities</p>
       <div className="space-y-4">
         {activities?.activities?.map((d: Activities) => (
