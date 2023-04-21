@@ -1,12 +1,12 @@
 import Image from "next/image";
 import React, { useContext } from "react";
 import Slider from "react-slick";
-import { Card } from "../card";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { HighLightProp } from "@/types/types";
 import { AppContext } from "@/context/ApiContext";
 import cn from "classnames";
+import { Card } from "../card";
 
 const twc = {
   sliderContainer: "my-10",

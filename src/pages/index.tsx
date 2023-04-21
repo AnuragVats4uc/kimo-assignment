@@ -32,10 +32,10 @@ export default function Home({ highlights, categories }: HomeProps) {
         <p className={"text-base font-bold text-dark-green plex-mono pb-4"}>
           Highlights
         </p>
-        <div className="flex space-x-4 hover:space-x-8 ">
+        <div className="flex space-x-4">
           {highlights.map((d) => {
             return (
-              <div className="w-full lg:flex container" key={d.title}>
+              <div className="container" key={d.title}>
                 <Card data={d} key={d.title} />
               </div>
             );

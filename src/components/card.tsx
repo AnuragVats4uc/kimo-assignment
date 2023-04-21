@@ -11,7 +11,7 @@ export type CardProps = {
 };
 
 const twc = {
-  cardContainer: "w-full bg-white rounded-lg boxShadow",
+  cardContainer: "w-full bg-white rounded-lg boxShadow lg:min-h-[300px] xl:min-h-[380px]",
   imageContainer: "w-full rounded-lg",
   image: "w-full rounded-t-lg",
   title: "plex-mono font-bold text-base text-teal leading-5 pb-4 ",
@@ -23,13 +23,8 @@ const twc = {
 
 export const Card = ({ data, isIcon = true }: CardProps) => {
   return (
-    <Link href={`/activities/${data.title}`} className={``}>
-      <div
-        className={cn(
-          twc.cardContainer,
-          "hover:scale-110 ease-in-out duration-75"
-        )}
-      >
+    <Link href={`/activities/${data.title}`}>
+      <div className={twc.cardContainer}>
         {data.image && (
           <div className={twc.imageContainer}>
             <Image

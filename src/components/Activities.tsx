@@ -14,7 +14,7 @@ export type Activities = {
 const twc = {
   headingCategory: "text-base font-bold text-dark-green plex-mono pb-4",
   label:
-    "mb-2 p-6 flex justify-between items-center bg-white cursor-pointer w-full rounded-lg",
+    "mb-2 p-6 flex plex-mono justify-between items-center bg-white cursor-pointer w-full rounded-lg",
 };
 
 export const Activities = () => {

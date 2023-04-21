@@ -10,7 +10,7 @@ const twc = {
     "bg-light-cyan py-10 pl-17px pr-4 w-full lg:w-1/2 scrollbar-hide",
   headingCategory: "text-base font-bold text-dark-green plex-mono pb-4",
   category:
-    "mb-2 p-6 flex justify-between items-center bg-white cursor-pointer w-full rounded-lg",
+    "mb-2 p-6 plex-mono flex justify-between items-center bg-white cursor-pointer w-full rounded-lg",
   categoryTitle: "font-normal plex-mono text-base leading-5",
 };
 

@@ -10,7 +10,7 @@ const twc = {
   travelDescription: "plex-mono font-normal text-base leading-5",
   travelImageContainer: "w-74px h-74px rounded-full",
   buttonLabel:
-    "font-bold text-base leading-5 rounded-lg text-teal px-6  pt-9px pb-11px flex items-center border border-teal hover:bg-teal hover:text-white transition-all ease-in-out duration-500 justify-center",
+    "font-bold font-greycliff text-base leading-5 rounded-lg text-teal px-6  pt-9px pb-11px flex items-center border border-teal hover:bg-teal hover:text-white transition-all ease-in-out duration-500 justify-center",
 };
 
 export enum TRAVELGUIDE {

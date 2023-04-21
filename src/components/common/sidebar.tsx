@@ -1,15 +1,16 @@
 import Image from "next/image";
-import React, { useContext, useEffect } from "react";
+import React, { Dispatch, SetStateAction, useContext, useEffect } from "react";
 import { CloseIcon } from "../icons/CloseIcon";
 import { HEADER, HighLightProp } from "@/types/types";
 import { AppContext } from "@/context/ApiContext";
 import cn from "classnames";
 import Link from "next/link";
 import { HEADERS } from "./header";
+import { useRouter } from "next/router";
 
 export type SidebarProps = {
-  onClick: () => void;
   isOpen: boolean;
+  setIsOpen: Dispatch<SetStateAction<boolean>>;
 };
 
 const twc = {
@@ -21,16 +22,18 @@ const twc = {
   label:
     "plex-mono font-normal text-xl leading-5 text-dark-green z-[1] pb-10 block",
   buttonStyle:
-    "px-6 pt-9px pb-11px text-center bg-teal z-[5] text-base leading-5 text-white rounded-lg",
+    "px-6 pt-9px pb-11px text-center bg-teal z-[5] text-base leading-5 text-white rounded-lg font-greycliff",
 };
 
-export const Sidebar = ({ onClick, isOpen }: SidebarProps) => {
+export const Sidebar = ({  isOpen, setIsOpen }: SidebarProps) => {
   const { data } = useContext(AppContext);
   const { highlights } = data;
+  const { pathname } = useRouter();
   useEffect(() => {
     const body: any = document.querySelector("body");
     body.style.overflow = isOpen ? "hidden" : "auto";
-  }, [isOpen]);
+    setIsOpen(false);
+  }, [pathname]);
   return (
     <div
       className={cn(twc.sidebarContainer, {
@@ -40,7 +43,7 @@ export const Sidebar = ({ onClick, isOpen }: SidebarProps) => {
     >
       <div className={twc.iconContainer}>
         <div className={twc.icon}>
-          <CloseIcon onClick={onClick} />
+          <CloseIcon onClick={() => setIsOpen(!isOpen)} />
         </div>
         <ul className={cn(twc.labelContainer, {})}>
           <Link href={HEADERS.HOME_PATH} className={twc.label}>
@@ -51,6 +54,7 @@ export const Sidebar = ({ onClick, isOpen }: SidebarProps) => {
               href={`/activities/${d.title}`}
               key={d.title}
               className={twc.label}
+              onClick={() => setIsOpen(false)}
             >
               {d.title}
             </Link>

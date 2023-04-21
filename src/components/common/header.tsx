@@ -18,7 +18,7 @@ const twc = {
   titleStyle:
     "lg:font-normal lg:text-lg lg:text-base lg:leading-5 lg:text-dark-green lg:cursor-pointer",
   buttonStyle:
-    "lg:px-6 plex-mono lg:pt-9px lg:pb-11px lg:text-center lg:font-bold lg:bg-teal lg:z-[5] lg:text-base lg:leading-5 lg:text-white lg:rounded-lg hover:bg-white hover:text-teal border border-teal transition-all ease-in-out duration-700",
+    "lg:px-6 font-greycliff lg:pt-9px lg:pb-11px lg:text-center lg:font-bold lg:bg-teal lg:z-[5] lg:text-base lg:leading-5 lg:text-white lg:rounded-lg hover:bg-white hover:text-teal border border-teal transition-all ease-in-out duration-700",
 };
 
 export enum HEADERS {
@@ -69,7 +69,10 @@ export const Header = () => {
           </div>
         </div>
       </div>
-      <Sidebar isOpen={isOpen} onClick={() => setIsOpen(!isOpen)} />
+      <Sidebar
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+      />
     </>
   );
 };

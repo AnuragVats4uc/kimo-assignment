@@ -40,3 +40,9 @@ body {
 .containers {
   margin: 0 172px 0 172px;
 }
+
+.font-greycliff {
+  font-family: greycliff-cf, sans-serif;
+  font-style: normal;
+  font-weight: 700;
+}
