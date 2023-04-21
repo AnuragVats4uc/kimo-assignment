@@ -25,7 +25,7 @@ export const Activities = () => {
       <p className={twc.headingCategory}>Activities</p>
       <div className="space-y-4">
         {activities?.activities?.map((d: Activities) => (
-          <li className={twc.label}>{d.name}</li>
+          <li key={d.name} className={twc.label}>{d.name}</li>
         ))}
       </div>
     </div>

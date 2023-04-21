@@ -25,15 +25,13 @@ const twc = {
     "px-6 pt-9px pb-11px text-center bg-teal z-[5] text-base leading-5 text-white rounded-lg font-greycliff",
 };
 
-export const Sidebar = ({  isOpen, setIsOpen }: SidebarProps) => {
+export const Sidebar = ({ isOpen, setIsOpen }: SidebarProps) => {
   const { data } = useContext(AppContext);
   const { highlights } = data;
-  const { pathname } = useRouter();
   useEffect(() => {
     const body: any = document.querySelector("body");
     body.style.overflow = isOpen ? "hidden" : "auto";
-    setIsOpen(false);
-  }, [pathname]);
+  }, [isOpen, setIsOpen]);
   return (
     <div
       className={cn(twc.sidebarContainer, {
